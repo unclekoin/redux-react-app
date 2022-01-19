@@ -1,1 +1,0 @@
-# [React & Redux](https://youtube.com/playlist?list=PL6DxKON1uLOHsBCJ_vVuvRsW84VnqmPp6)
