@@ -1,5 +1,6 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { fetchCustomers } from './asyncActions/customers';
 import { addCashAction, getCashAction } from './store/cashReducer';
 import {
   addCustomerAction,
@@ -10,6 +11,7 @@ const App = () => {
   const dispatch = useDispatch();
   const cash = useSelector((state) => state.cash.cash);
   const customers = useSelector((state) => state.customers.customers);
+  console.log(customers);
 
   const addCash = (cash) => {
     dispatch(addCashAction(cash));
@@ -18,6 +20,10 @@ const App = () => {
   const getCash = (cash) => {
     dispatch(getCashAction(cash));
   };
+
+  const getCustomers = () => {
+    dispatch(fetchCustomers());
+  }
 
   const addCustomer = (name) => {
     const customer = {
@@ -49,8 +55,14 @@ const App = () => {
           Withdraw from account
         </button>
         <button
-          onClick={() => addCustomer(prompt('Enter the amount:'))}
+          onClick={getCustomers}
           className="btn btn-primary me-2"
+        >
+          Get customers
+        </button>
+        <button
+          onClick={() => addCustomer(prompt('Enter the amount:'))}
+          className="btn btn-primary"
         >
           Add customer
         </button>
